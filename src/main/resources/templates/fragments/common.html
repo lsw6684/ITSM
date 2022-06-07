@@ -26,10 +26,10 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" th:classappend="${menu} == 'home' ? 'active'">
-                    <a class="nav-link" href="#">ITSM<span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
+                    <a class="nav-link" href="#" th:href="@{/}">ITSM<span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
                 </li>
                 <li class="nav-item" th:classappend="${menu}== 'board' ? 'active'">
-                    <a class="nav-link" href="#">Request<span class="sr-only" th:if="${menu} == 'board'">(current)</span></a>
+                    <a class="nav-link" href="#" th:href="@{/board/list}">Request<span class="sr-only" th:if="${menu} == 'board'">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Process</a>
