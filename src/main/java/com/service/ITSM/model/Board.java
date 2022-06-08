@@ -17,6 +17,9 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     private String TITLE;
+    private String CLASSIFICATION;
+    private String TYPE;
+    private String NAME;
     private String CONTENT;
     private String CREATE_DATE;
     private String UPDATE_DATE;

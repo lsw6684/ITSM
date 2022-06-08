@@ -23,6 +23,32 @@
     <div class="container">
         <h2>Request</h2>
         <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">분류</th>
+                <th scope="col">구분</th>
+                <th scope="col">제목</th>
+                <th scope="col">요청일</th>
+                <th scope="col">요청자</th>
+                <th scope="col">접수자</th>
+                <th scope="col">완료일</th>
+                <th scope="col">진행상태</th>
+              </tr>
+            </thead>
+                <tr th:each="board : ${boards}">
+                    <td th:text="${board.ID}"></td>
+                    <td th:text="${board.CLASSIFICATION}"></td>
+                    <td th:text="${board.TYPE}"></td>
+                    <td th:text="${board.TITLE}"></td>
+                    <td th:text="${board.CREATE_DATE}"></td>
+                    <td th:text="${board.NAME}"></td>
+                </tr>
+        </table>
+        <div class="text-right">
+            <button type="button" class="btn btn-secondary">문의하기</button>
+        </div>
     </div>
 
     <h1>후,,, 피곤하누</h1>
