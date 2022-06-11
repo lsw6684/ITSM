@@ -4,8 +4,6 @@ import com.service.ITSM.model.Board;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
-
 @Getter
 @Setter
 public class BoardDTO {
