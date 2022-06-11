@@ -4,8 +4,6 @@ import com.service.ITSM.model.Board;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
-
 @Getter
 @Setter
 public class BoardDTO {
@@ -25,7 +23,8 @@ public class BoardDTO {
          boardDTO.ID = board.getID();
          boardDTO.CLASSIFICATION = board.getCLASSIFICATION();
          boardDTO.CONTENT = board.getCONTENT();
-         boardDTO.CREATE_DATE = board.getCREATE_DATE().split(" ")[0];
+         if(boardDTO.CREATE_DATE != "null")
+             boardDTO.CREATE_DATE = board.getCREATE_DATE();//.split(" ")[0];
          boardDTO.TITLE = board.getTITLE();
          boardDTO.NAME = board.getNAME();
          boardDTO.TYPE = board.getTYPE();
