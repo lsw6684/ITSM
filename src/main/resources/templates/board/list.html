@@ -41,7 +41,7 @@
                     <td th:text="${board.ID}"></td>
                     <td th:text="${board.CLASSIFICATION}"></td>
                     <td th:text="${board.TYPE}"></td>
-                    <td th:text="${board.TITLE}"></td>
+                    <td><a th:text="${board.TITLE}" th:href="@{/board/form(ID=${board.ID})}"></a></td>
                     <td th:text="${board.CREATE_DATE}"></td>
                     <td th:text="${board.NAME}"></td>
                 </tr>
