@@ -23,7 +23,7 @@ public class BoardDTO {
          boardDTO.ID = board.getID();
          boardDTO.CLASSIFICATION = board.getCLASSIFICATION();
          boardDTO.CONTENT = board.getCONTENT();
-         if(boardDTO.CREATE_DATE != "null")
+         if(boardDTO.CREATE_DATE != "")
              boardDTO.CREATE_DATE = board.getCREATE_DATE();//.split(" ")[0];
          boardDTO.TITLE = board.getTITLE();
          boardDTO.NAME = board.getNAME();
