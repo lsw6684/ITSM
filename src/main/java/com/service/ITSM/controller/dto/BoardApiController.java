@@ -2,24 +2,17 @@ package com.service.ITSM.controller.dto;
 
 import com.service.ITSM.model.Board;
 import com.service.ITSM.repository.BoardRepository;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-class BoardController {
+@RequestMapping("/api")
+class BoardApiController {
 
-    private final BoardRepository repository;
-
-    BoardController(BoardRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private BoardRepository repository;
 
 
     // Aggregate root
@@ -37,30 +30,34 @@ class BoardController {
 
     // Single item
 
-    @GetMapping("/boards/{id}")
-    Board one(@PathVariable Long id) {
+    @GetMapping("/boards/{ID}")
+    Board one(@PathVariable Long ID) {
 
-        return repository.findById(id)
-                .orElseThrow(() -> new BoardNotFoundException(id));
+        return repository.findById(ID).orElse(null);
     }
 
-    @PutMapping("/boards/{id}")
-    Board replaceBoard(@RequestBody Board newBoard, @PathVariable Long id) {
+    @PutMapping("/boards/{ID}")
+    Board replaceBoard(@RequestBody Board newBoard, @PathVariable Long ID) {
 
-        return repository.findById(id)
+        return repository.findById(ID)
                 .map(board -> {
                     board.setID(newBoard.getID());
-                    board.setC(newBoard.getRole());
+                    board.setCLASSIFICATION(newBoard.getCLASSIFICATION());
+                    board.setTYPE(newBoard.getTYPE());
+                    board.setNAME(newBoard.getNAME());
+                    board.setTITLE(newBoard.getTITLE());
+                    board.setCONTENT(newBoard.getCONTENT());
+                    board.setCREATE_DATE(newBoard.getCREATE_DATE());
                     return repository.save(board);
                 })
                 .orElseGet(() -> {
-                    newBoard.setID(id);
+                    newBoard.setID(ID);
                     return repository.save(newBoard);
                 });
     }
 
-    @DeleteMapping("/boards/{id}")
-    void deleteBoard(@PathVariable Long id) {
-        repository.deleteById(id);
+    @DeleteMapping("/boards/{ID}")
+    void deleteBoard(@PathVariable Long ID) {
+        repository.deleteById(ID);
     }
 }
