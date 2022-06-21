@@ -41,17 +41,16 @@ class BoardApiController {
 
         return repository.findById(ID)
                 .map(board -> {
-                    board.setID(newBoard.getID());
-                    board.setCLASSIFICATION(newBoard.getCLASSIFICATION());
-                    board.setTYPE(newBoard.getTYPE());
-                    board.setNAME(newBoard.getNAME());
-                    board.setTITLE(newBoard.getTITLE());
-                    board.setCONTENT(newBoard.getCONTENT());
-                    board.setCREATE_DATE(newBoard.getCREATE_DATE());
+                    board.setId(newBoard.getId());
+                    board.setClassification(newBoard.getClassification());
+                    board.setTitle(newBoard.getTitle());
+                    board.setName(newBoard.getName());
+                    board.setTitle(newBoard.getTitle());
+                    board.setContent(newBoard.getContent());
                     return repository.save(board);
                 })
                 .orElseGet(() -> {
-                    newBoard.setID(ID);
+                    newBoard.setId(ID);
                     return repository.save(newBoard);
                 });
     }
