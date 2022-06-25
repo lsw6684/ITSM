@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-    
+
 
 <head th:replace="fragments/common :: head('Request')">
     <!-- Required meta tags -->
@@ -23,40 +23,48 @@
     <div class="container">
         <h2>Request</h2>
         <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
+        <form class="row g-3 d-flex justify-content-end">
+            <div class="col-auto">
+                <input type="password" class="form-control" id="searchText" name="searchText" placeholder="입력">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">검색</button>
+            </div>
+        </form>
         <table class="table">
             <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">분류</th>
-                <th scope="col">구분</th>
-                <th scope="col">제목</th>
-                <th scope="col">요청일</th>
-                <th scope="col">요청자</th>
-                <th scope="col">접수자</th>
-                <th scope="col">완료일</th>
-                <th scope="col">진행상태</th>
-              </tr>
-            </thead>
-                <tr th:each="board : ${boards}">
-                    <td th:text="${board.ID}"></td>
-                    <td th:text="${board.CLASSIFICATION}"></td>
-                    <td th:text="${board.TYPE}"></td>
-                    <td><a th:text="${board.TITLE}" th:href="@{/board/form(ID=${board.ID})}"></a></td>
-                    <td th:text="${board.CREATE_DATE}"></td>
-                    <td th:text="${board.NAME}"></td>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">분류</th>
+                    <th scope="col">구분</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">요청일</th>
+                    <th scope="col">요청자</th>
+                    <th scope="col">접수자</th>
+                    <th scope="col">완료일</th>
+                    <th scope="col">진행상태</th>
                 </tr>
+            </thead>
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.ID}"></td>
+                <td th:text="${board.CLASSIFICATION}"></td>
+                <td th:text="${board.TYPE}"></td>
+                <td><a th:text="${board.TITLE}" th:href="@{/board/form(ID=${board.ID})}"></a></td>
+                <td th:text="${board.CREATE_DATE}"></td>
+                <td th:text="${board.NAME}"></td>
+            </tr>
         </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
             </ul>
         </nav>
 
